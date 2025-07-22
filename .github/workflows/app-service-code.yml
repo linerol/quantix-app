@@ -29,8 +29,9 @@ jobs:
 
       - name: Copy static files
         run: |
-          cp -R ./public ./.next/standalone/public
-          cp -R ./.next/static ./.next/standalone/.next/static
+          cp -R ./public ./.next/standalone/
+          mkdir -p ./.next/standalone/.next
+          cp -R ./.next/static ./.next/standalone/.next/
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
