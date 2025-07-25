@@ -42,7 +42,7 @@ jobs:
 
     environment:
       name: production
-      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}/
 
     steps:
       - name: Deploy to Azure Web App
