@@ -22,6 +22,9 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
+# Ajout : création du fichier .env avec la variable d'environnement avant le build
+RUN echo "NEXT_PUBLIC_API_URL=https://quantix-api-dw6b.onrender.com" > .env
+
 # Next.js collects completely anonymous telemetry data about general usage.
 # Learn more here: https://nextjs.org/telemetry
 # Uncomment the following line in case you want to disable telemetry during the build.
@@ -39,7 +42,7 @@ FROM base AS runner
 WORKDIR /app
 
 ENV NODE_ENV=production
-ENV NEXT_PUBLIC_API_URL=https://quantix-api-dw6b.onrender.com
+# ENV NEXT_PUBLIC_API_URL=https://quantix-api-dw6b.onrender.com
 # Uncomment the following line in case you want to disable telemetry during runtime.
 # ENV NEXT_TELEMETRY_DISABLED 1
 
